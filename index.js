@@ -8,8 +8,6 @@ const firebase = require("firebase");
 const config = require("./config");
 firebase.initializeApp(config);
 
-// const initialNodes = require("./initial_nodes");
-
 const database = firebase.database();
 const nodesRef = database.ref("nodes");
 
@@ -21,17 +19,27 @@ app.listen(port, host, () =>
   console.log(`NodeInfo app listening on port ${port}!`)
 );
 
+// const initialNodes = require("./initial_nodes");
 // app.get("/init", (req, res) => {
 //   nodesRef.set(initialNodes);
 //   res.send(initialNodes);
 // });
 
 app.post("/take", async (req, res) => {
-  console.log("query: ", req.query);
-  console.log("body: ", req.body);
-  console.log("params: ", req.params);
-  nodeId = req.query.text;
-  name = req.query.user_name;
+  [nodeId, name] = req.body.text.trim().split(" ");
+
+  await nodesRef
+    .child(parseInt(nodeId))
+    .child("users")
+    .update({
+      [name]: ""
+    });
+
+  res.send(`node${nodeId} was taken by ${name}`);
+});
+
+app.post("/checknode", async (req, res) => {
+  [nodeId, name] = req.body.text.trim().split(" ");
 
   await nodesRef
     .child(parseInt(nodeId))

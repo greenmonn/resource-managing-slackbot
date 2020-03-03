@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
-const port = 5000;
+const host = "0.0.0.0";
+const port = process.env.PORT || 3000;
 
 const firebase = require("firebase");
 
@@ -16,7 +17,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => res.send("Hello World!"));
-app.listen(port, () => console.log(`NodeInfo app listening on port ${port}!`));
+app.listen(port, host, () =>
+  console.log(`NodeInfo app listening on port ${port}!`)
+);
 
 // app.get("/init", (req, res) => {
 //   nodesRef.set(initialNodes);

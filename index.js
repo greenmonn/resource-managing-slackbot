@@ -7,7 +7,7 @@ const firebase = require("firebase");
 const config = require("./config");
 firebase.initializeApp(config);
 
-const initialNodes = require("./initial_nodes");
+// const initialNodes = require("./initial_nodes");
 
 const database = firebase.database();
 const nodesRef = database.ref("nodes");
@@ -18,10 +18,10 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", (req, res) => res.send("Hello World!"));
 app.listen(port, () => console.log(`NodeInfo app listening on port ${port}!`));
 
-app.get("/init", (req, res) => {
-  nodesRef.set(initialNodes);
-  res.send(initialNodes);
-});
+// app.get("/init", (req, res) => {
+//   nodesRef.set(initialNodes);
+//   res.send(initialNodes);
+// });
 
 app.post("/take", async (req, res) => {
   console.log(req.query);

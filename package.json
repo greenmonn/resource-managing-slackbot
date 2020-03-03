@@ -1,0 +1,19 @@
+{
+  "name": "slackbot-server-info",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "firebase": "^7.9.3"
+  },
+  "engines": {
+    "node": "10.x"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

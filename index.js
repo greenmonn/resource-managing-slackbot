@@ -27,7 +27,9 @@ app.listen(port, host, () =>
 // });
 
 app.post("/take", async (req, res) => {
-  console.log(req.query);
+  console.log("query: ", req.query);
+  console.log("body: ", req.body);
+  console.log("params: ", req.params);
   nodeId = req.query.text;
   name = req.query.user_name;
 

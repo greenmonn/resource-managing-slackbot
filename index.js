@@ -19,12 +19,6 @@ app.listen(port, host, () =>
   console.log(`NodeInfo app listening on port ${port}!`)
 );
 
-// const initialNodes = require("./initial_nodes");
-// app.get("/init", (req, res) => {
-//   nodesRef.set(initialNodes);
-//   res.send(initialNodes);
-// });
-
 app.post("/check", (req, res) => {
   [nodeId] = req.body.text.trim();
   nodesRef
